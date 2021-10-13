@@ -199,3 +199,54 @@ action：在找到匹配内容时所执行的一系列命令
 -F	指定输入文件折分隔符
 -v	赋值一个用户定义变量
 
+sort
+sort命令是在Linux里非常有用，它将文件进行排序，并将排序结果标准输出。
+1.	基本语法
+
+sort(选项)(参数)
+选项	说明
+-n	依照数值的大小排序
+-r	以相反的顺序来排序
+-t	设置排序时所用的分隔字符
+-k	指定需要排序的列
+参数：指定待排序的文件列表
+
+
+题目：使用Linux命令查询file1中空行所在的行号
+awk '/^$/{print NR}' sed.txt 
+
+张三 40
+李四 50
+王五 60
+使用Linux命令计算第二列的和并输出
+cat chengji.txt | awk -F " " '{sum+=$2} END{print sum}'
+
+
+Shell脚本里如何检查一个文件是否存在？如果不存在该如何处理？
+#!/bin/bash
+
+if [ -f file.txt ]; then
+   echo "文件存在!"
+else
+   echo "文件不存在!"
+fi
+
+用shell写一个脚本，对文本中无序的一列数字排序
+cat test.txt
+9
+8
+7
+6
+5
+4
+3
+2
+10
+1
+
+sort -n test.txt|awk '{a+=$0;print $0}END{print "SUM="a}
+
+请用shell脚本写出查找当前文件夹（/home）下所有的文本文件内容中包含有字符”shen”的文件名称
+grep -r "shen" /home | cut -d ":" -f 1
+
+
